@@ -1,0 +1,1 @@
+## Backend for the auto-email project built with FastAPI and MySQL

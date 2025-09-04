@@ -1,0 +1,1 @@
+## Frontend for the auto-email project built with React + Vite
