@@ -1,7 +1,11 @@
+import os
+
+from dotenv import load_dotenv
 from sqlalchemy import create_engine, MetaData
 from sqlalchemy.orm import sessionmaker, declarative_base
 
-DATABASE_URL = "mysql+pymysql://root:teste@localhost:3306/email_analyser"
+load_dotenv()
+DATABASE_URL = os.getenv("DATABASE_URL") or ""
 
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)

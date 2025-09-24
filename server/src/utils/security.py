@@ -1,12 +1,16 @@
+import os
+
 from datetime import datetime, timedelta, timezone
 from jwt import encode
+from dotenv import load_dotenv
 from passlib.context import CryptContext
 from pydantic import BaseModel
 
+load_dotenv()
 
-SECRET_KEY = 'e802cc1dd0ae04fad8968fdaae9aa5c0e695878f4004a4a7b95433868ff00da8'
+SECRET_KEY = os.getenv('JWT_SECRET_KEY') or ''
 ALGORITHM = 'HS256'
-ACCESS_TOKEN_EXPIRE_MINUTES = 30
+ACCESS_TOKEN_EXPIRE_MINUTES = 300 # TODO diminuir duraçao e usar refresh token
 
 password_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 

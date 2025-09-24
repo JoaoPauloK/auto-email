@@ -1,7 +1,7 @@
 import api from "@/api/api";
-import type { AxiosResponse } from "axios";
+import type { SendEmailResponse, HistoryResponse, NewUserResponse } from "@/api/schemas";
 
-export function sendTextData(content: string, authenticated: boolean = false): Promise<AxiosResponse> {
+export function sendTextData(content: string, authenticated: boolean = false): Promise<{ data: SendEmailResponse }> {
     const endpoint: string = authenticated ? "/new" : "/new-no-user";
     return api.post(endpoint, { content, type: 'plain' }, {
         headers: { "Content-Type": "application/json" },
@@ -11,13 +11,17 @@ export function sendTextData(content: string, authenticated: boolean = false): P
 export function sendFileData(
     data: FormData,
     authenticated: boolean = false
-): Promise<AxiosResponse> {
+): Promise<{ data: SendEmailResponse } > {
     const endpoint: string = authenticated ? "/new-file" : "/new-file-no-user";
     return api.post(endpoint, data, {
         headers: { "Content-Type": "multipart/form-data" },
     });
 }
 
-export function newUser(username: string, password: string) {
-    return api.post('/user', { username, password })
+export function newUser(email: string, password: string): Promise<NewUserResponse> {
+    return api.post('/user', { email, password })
+}
+
+export function listEmails(): Promise<{ data: HistoryResponse[] }> {
+    return api.get('/emails')
 }

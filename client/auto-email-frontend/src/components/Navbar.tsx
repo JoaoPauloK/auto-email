@@ -1,5 +1,3 @@
-import { ZapIcon } from "lucide-react";
-
 import { Badge } from "@/components/ui/badge";
 import {
     NavigationMenu,
@@ -10,6 +8,8 @@ import {
 import LoginModal from "./Login";
 import { useAuth } from "@/provider/authProvider";
 import type { EmailType } from "@/App";
+import NewUser from "./NewUser";
+import History from "./History";
 
 const navigationLinks = [
     { href: "#", label: "Plain Text", active: true, inputType: 'plain' },
@@ -71,22 +71,16 @@ export function Navbar({ setInputType }: NavbarProps) {
                             {auth?.isAuthenticated ? "Online" : "Offline"}
                         </Badge>
                         {auth?.isAuthenticated && (
-                            <Badge
-                                variant="outline"
-                                className="gap-1.5 text-neutral-200 hover:bg-neutral-700 cursor-pointer"
-                            >
-                                <ZapIcon
-                                    className="-ms-0.5 opacity-60"
-                                    size={12}
-                                    aria-hidden="true"
-                                />
-                                History
-                            </Badge>
+                            <History />
                         )}
                         {auth?.isAuthenticated ? (
                             <auth.logout />
                         ) : (
+                            <>
                             <LoginModal />
+                            <NewUser />
+                            </>
+                            
                         )}
                     </div>
                 </div>

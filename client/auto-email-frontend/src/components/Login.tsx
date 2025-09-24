@@ -15,11 +15,8 @@ import { toast, Toaster } from "sonner";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useAuth } from "@/provider/authProvider";
-import NewUser from "./NewUser";
-import { useState } from "react";
 
 export default function LoginModal() {
-    const [newUserDialog, setNewUserDialog] = useState<boolean>(false);
     const auth = useAuth();
 
     function handleLogin(e: React.FormEvent<HTMLFormElement>) {
@@ -29,9 +26,8 @@ export default function LoginModal() {
         const password = formData.get("password") as string;
         auth?.login(username, password).then(() => {
             toast('Login successfully!')
-            console.log(auth)
         }).catch(err => {
-            console.log(err.response)
+            console.error(err.response)
             toast('Authentication failed', { description: err.response.statusText, closeButton: true })
         })
     }
@@ -80,14 +76,6 @@ export default function LoginModal() {
                         </div>
                     </div>
                     <DialogFooter className="mt-4">
-                        <Button
-                            type="button"
-                            variant="outline"
-                            className="mr-auto hover:bg-neutral-800 cursor-pointer"
-                            onClick={() => setNewUserDialog(true)}
-                        >
-                            New Account
-                        </Button>
                         <DialogClose asChild>
                             <Button
                                 variant="outline"
@@ -107,7 +95,6 @@ export default function LoginModal() {
                 </form>
             </DialogContent>
             <DialogOverlay className="backdrop-blur-sm" />
-            {newUserDialog && <NewUser />}
         </Dialog>
     );
 }

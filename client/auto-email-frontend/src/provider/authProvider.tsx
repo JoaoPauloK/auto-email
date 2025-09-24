@@ -88,7 +88,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
                 data.append("username", username);
                 data.append("password", password);
                 console.log("Logging in with:", { username, password });
-                const response = await api.post("/login", data, {
+                const response = await api.post("/auth/login", data, {
                     headers: {
                         "Content-Type": "application/x-www-form-urlencoded",
                     },

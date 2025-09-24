@@ -1,30 +1,41 @@
-import { DialogTitle } from "@radix-ui/react-dialog";
+import { DialogTitle, DialogTrigger } from "@radix-ui/react-dialog";
 import { Dialog, DialogClose, DialogContent, DialogFooter, DialogHeader, DialogOverlay } from "./ui/dialog";
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { toast, Toaster } from "sonner";
 import { newUser } from "@/services/services";
-import { useState } from "react";
+import { Badge } from "./ui/badge";
 
 export default function NewUser() {
-    const [open, setOpen] = useState<boolean>(true);
-
     function handleSubmitNewUser(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
-        const username = formData.get("username") as string;
+        const email = formData.get("username") as string;
         const password = formData.get("password") as string;
-        newUser(username, password).then(() => {
+        if (!email || !password) {
+            toast('Email and password are required', { description: 'Please provide both email and password', closeButton: true })
+            return;
+        }
+        newUser(email, password).then(() => {
             toast('User created successfully');
-            setOpen(false);
         }).catch(error => {
-            throw error;
+            toast('Error creating user', { description: error.response.data.message, closeButton: true  })
         })
     }
     return (
-        <Dialog open={open}>
+        <Dialog>
             <Toaster />
+            <DialogTrigger asChild>
+                <Badge
+                    variant="outline"
+                    className="gap-1 px-2 py-0.5 text-neutral-200 hover:bg-neutral-600"
+                >
+                    <Button className="size-1.5 mx-6.5 text-xs cursor-pointer">
+                        Create Account
+                    </Button>
+                </Badge>
+            </DialogTrigger>
             <DialogContent className="text-neutral-400">
                 <form onSubmit={handleSubmitNewUser}>
                     <DialogHeader>
