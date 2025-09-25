@@ -15,9 +15,10 @@ export default function History() {
     try {
         const res = await listEmails();
         setEmails(res.data);
-    } catch (error) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
       console.error(error)
-      toast('Error loading history', { description: error.toString(), closeButton: true })
+      toast('Error loading history', { description: error.response.data.message, closeButton: true })
     }
   }
 

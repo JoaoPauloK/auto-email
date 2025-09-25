@@ -15,6 +15,7 @@ import os
 from dotenv import load_dotenv
 
 from fastapi import FastAPI
+from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 from api.router import router
 
@@ -22,6 +23,8 @@ __author__ = "João Paulo"
 __version__ = "1.0.0"
 __license__ = "MIT"
 __email__ = "joaocoimbra881@gmail.com"
+
+FRONTEND_PATH = os.path.join(os.path.dirname(__file__), "../../client/auto-email-frontend/dist")
 
 load_dotenv()
 
@@ -36,5 +39,15 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+@app.get("/{path:path}")
+async def root(path: str):
+    """
+    Serve the frontend application.
+    """
+    file_path = os.path.join(FRONTEND_PATH, path)
+    if os.path.isfile(file_path):
+        return FileResponse(file_path)
+    return FileResponse(os.path.join(FRONTEND_PATH, "index.html"))
 
 app.include_router(router)
