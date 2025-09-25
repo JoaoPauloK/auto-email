@@ -1,6 +1,6 @@
 import enum
 from sqlalchemy import Column, ForeignKey, Integer, DateTime, Enum, Text, String, Boolean
-from database.database import Base
+from ..database.database import Base
 
 
 class Categories(enum.Enum):
