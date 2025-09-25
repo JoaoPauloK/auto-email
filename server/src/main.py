@@ -40,6 +40,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+app.include_router(router)
+
 @app.get("/{path:path}")
 async def root(path: str):
     """
@@ -49,5 +51,3 @@ async def root(path: str):
     if os.path.isfile(file_path):
         return FileResponse(file_path)
     return FileResponse(os.path.join(FRONTEND_PATH, "index.html"))
-
-app.include_router(router)

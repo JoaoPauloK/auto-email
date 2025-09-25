@@ -10,7 +10,7 @@ from server.src.utils.utils import get_user
 
 router = APIRouter(prefix='/user', tags=['user'])
 
-@router.post("/")
+@router.post("")
 async def create_user(user: UserInput, db: Session = Depends(get_db)):
     existing_user = await get_user(db, username=user.email)
     if existing_user:
