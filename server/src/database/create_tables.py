@@ -1,5 +1,5 @@
 from .database import Base, engine
-from models import Email
+from models import Email, User
 
 def migrate():
     print("Dropping all tables...")
