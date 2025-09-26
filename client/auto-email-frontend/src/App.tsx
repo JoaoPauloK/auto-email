@@ -59,7 +59,6 @@ function App() {
                     });
                 });
         } else if (inputType === "pdf" || inputType === "txt") {
-            console.log(file);
             if (!file) {
                 toast("A file must be provided!");
                 return;
@@ -71,7 +70,7 @@ function App() {
 
             formData.append("file", file);
             toast("File sent, please wait...");
-            sendFileData(formData)
+            sendFileData(formData, auth?.isAuthenticated)
                 .then((res) => {
                     setResult({
                         category: res.data.category as TCategories | undefined,
