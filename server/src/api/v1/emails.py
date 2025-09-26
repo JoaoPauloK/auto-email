@@ -60,7 +60,7 @@ async def read_file(
         text = extract_text_from_txt(content)
         type = "txt"
     if text:
-        create_new_email_entry(db, text, type, current_user.user.id)
+        create_new_email_entry(db, text, type, current_user.id)
         return JSONResponse(
             content={
                 "message": "Success",
