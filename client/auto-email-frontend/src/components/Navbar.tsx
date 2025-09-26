@@ -10,6 +10,7 @@ import { useAuth } from "@/provider/authProvider";
 import type { EmailType } from "@/App";
 import NewUser from "./NewUser";
 import History from "./History";
+import Welcome from "./Welcome";
 
 const navigationLinks = [
     { href: "#", label: "Plain Text", active: true, inputType: 'plain' },
@@ -82,6 +83,7 @@ export function Navbar({ setInputType }: NavbarProps) {
                             </>
                             
                         )}
+                        <Welcome />
                     </div>
                 </div>
             </div>
