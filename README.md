@@ -1,164 +1,165 @@
-# Auto Email - Sistema Inteligente de Classificação de Emails
+# Auto Email - Intelligent Email Classification System
 
-## 📧 Visão Geral
+## 📧 Overview
 
-O **Auto Email** é um sistema completo de classificação automática de emails que utiliza inteligência artificial para determinar se um email necessita de resposta e gerar respostas apropriadas quando necessário.
+**Auto Email** is a complete automatic email classification system that uses artificial intelligence to determine whether an email needs a response and to generate appropriate replies when needed.
 
-## 🎯 Objetivo do Projeto
+## 🎯 Project Goal
 
-### Problema Resolvido
-Em um mundo onde recebemos centenas de emails diariamente, é desafiador identificar rapidamente quais mensagens realmente precisam de atenção e resposta. Muitos emails são apenas informativos, spam, ou mensagens automáticas que não requerem ação.
+### Problem Solved
+In a world where we receive hundreds of emails every day, it is challenging to quickly identify which messages truly need attention and a response. Many emails are simply informational, spam, or automated messages that do not require action.
 
-### Solução Oferecida
-O sistema analisa automaticamente o conteúdo de emails e:
-- **Classifica** como "Produtivo" (precisa de resposta) ou "Improdutivo" (não precisa de resposta)
-- **Gera respostas automáticas** educadas e contextuais para emails produtivos
-- **Mantém histórico** de todas as análises realizadas
-- **Suporta múltiplos formatos** (texto simples, PDF, arquivos TXT)
+### Solution Provided
+The system automatically analyzes email content and:
+- **Classifies** emails as "Productive" (needs a response) or "Unproductive" (does not need a response)
+- **Generates automatic responses** that are polite and context-aware for productive emails
+- **Keeps a history** of all analyses performed
+- **Supports multiple formats** (plain text, PDF, and TXT files)
 
-## 🏗️ Arquitetura do Sistema
+## 🏗️ System Architecture
 
-O projeto é dividido em duas partes principais:
+The project is divided into two main parts:
 
-### 🎨 **Frontend** - Interface do Usuário
-- **Tecnologia**: React + TypeScript + Vite
-- **UI/UX**: Interface moderna com Tailwind CSS e Shadcn/ui
-- **Funcionalidades**: Upload de arquivos, autenticação, visualização de resultados e histórico
+### 🎨 **Frontend** - User Interface
+- **Technology**: React + TypeScript + Vite
+- **UI/UX**: Modern interface with Tailwind CSS and Shadcn/ui
+- **Features**: File upload, authentication, result viewing, and history
 
-### ⚙️ **Backend** - API e IA
-- **Tecnologia**: FastAPI + Python
-- **IA**: Integração com modelos Hugging Face para processamento de linguagem natural
-- **Banco de Dados**: SQLAlchemy com MySQL para persistência de dados
-- **Segurança**: Autenticação JWT e hash de senhas com bcrypt
+### ⚙️ **Backend** - API and AI
+- **Technology**: FastAPI + Python
+- **AI**: Integration with Hugging Face models for natural language processing
+- **Database**: SQLAlchemy with MySQL for persistence
+- **Security**: JWT authentication and password hashing with bcrypt
 
-## 🚀 Como Funciona
+## 🚀 How It Works
 
 ```
-1. 📝 Usuário insere email (texto ou arquivo)
+1. 📝 User submits an email (text or file)
      ↓
-2. 🔄 Sistema processa com IA
-     ↓  
-3. 🎯 Classifica como Produtivo/Improdutivo
+2. 🔄 The system processes it with AI
      ↓
-4. ✍️ Gera resposta (se produtivo)
+3. 🎯 Classifies it as Productive/Unproductive
      ↓
-5. 💾 Salva no histórico (se usuário logado)
+4. ✍️ Generates a response (if productive)
+     ↓
+5. 💾 Saves it to the history (if the user is logged in)
 ```
 
-## 📋 Funcionalidades
+## 📋 Features
 
-### ✅ **Principais**
-- Classificação automática de emails usando IA
-- Geração de respostas contextuais
-- Interface web intuitiva e responsiva
-- Sistema completo de autenticação
-- Histórico pessoal de emails processados
+### ✅ **Main Features**
+- Automatic email classification using AI
+- Contextual response generation
+- Intuitive and responsive web interface
+- Complete authentication system
+- Personal history of processed emails
 
-### 📎 **Formatos Suportados**
-- Texto simples
-- Arquivos PDF
-- Arquivos TXT
+### 📎 **Supported Formats**
+- Plain text
+- PDF files
+- TXT files
 
-### 👥 **Usuários**
-- Modo anônimo (sem histórico)
-- Usuários registrados (com histórico completo)
+### 👥 **Users**
+- Anonymous mode (without history)
+- Registered users (with complete history)
 
-## 🛠️ Tecnologias Utilizadas
+## 🛠️ Technologies Used
 
 ### Frontend
 - React 19 + TypeScript
 - Vite (build tool)
 - Tailwind CSS + Shadcn/ui
-- Axios para comunicação com API
+- Axios for API communication
 
-### Backend  
+### Backend
 - FastAPI (Python)
 - SQLAlchemy + MySQL
-- Hugging Face (modelos de IA)
-- JWT para autenticação
+- Hugging Face (AI models)
+- JWT for authentication
 
-### DevOps & Ferramentas
-- Git para versionamento
-- ESLint para qualidade de código
-- Ambiente virtual Python
+### DevOps & Tools
+- Git for versioning
+- ESLint for code quality
+- Python virtual environment
 
-## 🚀 Como Executar o Projeto
+## 🚀 How to Run the Project
 
-### Pré-requisitos
+### Prerequisites
 - Python 3.11+
 - Node.js 18+
-- MySQL (para banco de dados)
-- Token da Hugging Face
+- MySQL (for the database)
+- Hugging Face token
 
-### Execução Rápida
+### Quick Start
 
-1. **Clone o repositório**
+1. **Clone the repository**
 ```bash
 git clone https://github.com/JoaoPauloK/auto-email.git
 cd auto-email
 ```
 
-2. **Configure e execute o backend**
+2. **Set up and run the backend**
 ```bash
 cd server
-# Siga as instruções em server/src/README.md
+# Follow the instructions in server/src/README.md
 ```
 
-3. **Configure e execute o frontend**
+3. **Set up and run the frontend**
 ```bash
-cd client/auto-email-frontend  
-# Siga as instruções em client/README.md
+cd client/auto-email-frontend
+# Follow the instructions in client/README.md
 ```
 
-### 📚 Documentação Detalhada
+### 📚 Detailed Documentation
 
-Para instruções completas de instalação, configuração e desenvolvimento:
+For complete installation, configuration, and development instructions:
 
 - **Backend**: [`server/src/README.md`](server/src/README.md)
 - **Frontend**: [`client/README.md`](client/README.md)
 
-## 📁 Estrutura do Projeto
+## 📁 Project Structure
 
 ```
 auto-email/
-├── README.md              # Este arquivo (visão geral)
-├── .gitignore            # Arquivos ignorados pelo Git
-├── client/               # Frontend React
-│   ├── README.md         # Documentação do frontend
+├── README.md              # This file (overview)
+├── LICENSE                # MIT license
+├── .gitignore             # Git ignored files
+├── client/                # React frontend
+│   ├── README.md          # Frontend documentation
 │   └── auto-email-frontend/
-│       ├── src/          # Código fonte React
-│       ├── public/       # Assets públicos
-│       └── package.json  # Dependências frontend
-└── server/               # Backend FastAPI
-    ├── requirements.txt  # Dependências Python
-    └── src/              
-        ├── README.md     # Documentação do backend
-        ├── main.py       # Aplicação principal
-        ├── api/          # Rotas da API
-        ├── models/       # Modelos do banco
-        ├── services/     # Lógica de negócio e IA
-        └── utils/        # Utilitários e segurança
+│       ├── src/           # React source code
+│       ├── public/        # Public assets
+│       └── package.json   # Frontend dependencies
+└── server/                # FastAPI backend
+    ├── requirements.txt   # Python dependencies
+    └── src/
+        ├── README.md      # Backend documentation
+        ├── main.py        # Main application
+        ├── api/           # API routes
+        ├── models/        # Database models
+        ├── services/      # Business logic and AI
+        └── utils/        # Utilities and security
 ```
 
-## 🤝 Contribuição
+## 🤝 Contributing
 
-Este é um projeto acadêmico/demonstrativo. Para contribuições:
+This is an academic/demo project. To contribute:
 
-1. Faça um fork do projeto
-2. Crie uma branch para sua feature
-3. Commit suas mudanças
-4. Abra um Pull Request
+1. Fork the project
+2. Create a branch for your feature
+3. Commit your changes
+4. Open a Pull Request
 
-## 📄 Licença
+## 📄 License
 
-Este projeto está licenciado sob a licença MIT - veja os arquivos de documentação específicos para mais detalhes.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-## 👨‍💻 Autor
+## 👨‍💻 Author
 
-**João Paulo**  
+**João Paulo**
 - GitHub: [@JoaoPauloK](https://github.com/JoaoPauloK)
 - Email: joaocoimbra881@gmail.com
 
 ---
 
-⭐ **Se este projeto foi útil, considere dar uma estrela no repositório!**
+⭐ **If this project was useful, consider giving it a star on GitHub!**
